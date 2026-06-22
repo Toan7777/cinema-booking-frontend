@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api, { ensureCsrfCookie } from '../api/axios';
+import api, { saveToken } from '../api/axios';
 
 export default function LoginPage({ onLoggedIn }) {
   const [email, setEmail] = useState('');
@@ -14,10 +14,10 @@ export default function LoginPage({ onLoggedIn }) {
     setError('');
     setLoading(true);
     try {
-      await ensureCsrfCookie();
       const url = isRegister ? '/auth/register' : '/auth/login';
       const body = isRegister ? { fullName, email, password } : { email, password };
       const res = await api.post(url, body);
+      saveToken(res.data.token);
       onLoggedIn(res.data.user);
     } catch (err) {
       setError(err.response?.data?.message || 'Có lỗi xảy ra');
