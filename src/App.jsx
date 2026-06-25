@@ -19,6 +19,16 @@ export default function App() {
       .finally(() => setChecking(false));
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      await api.post('/auth/logout');
+    } catch (e) {
+      // dù lỗi vẫn xóa token local để đăng xuất phía client
+    }
+    clearToken();
+    setUser(null);
+  };
+
   if (checking) return null;
 
   if (!user) {
@@ -32,9 +42,25 @@ export default function App() {
         <div className="app-logo display">
           🎬 <span>CINE<span className="gold">PLEX</span></span>
         </div>
-        <span className="user-chip">
-          Xin chào, <b>{user.fullName}</b> · {user.role}
-        </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span className="user-chip">
+            Xin chào, <b>{user.fullName}</b> · {user.role}
+          </span>
+          <button
+            onClick={handleLogout}
+            style={{
+              background: 'transparent',
+              border: '1px solid rgba(212,163,60,0.3)',
+              color: 'var(--cream-dim)',
+              padding: '8px 14px',
+              borderRadius: 20,
+              fontSize: 13,
+              cursor: 'pointer',
+            }}
+          >
+            Đăng xuất
+          </button>
+        </div>
       </header>
       <SeatMap showtimeId={1} />
     </div>
