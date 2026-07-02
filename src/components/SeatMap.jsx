@@ -237,20 +237,32 @@ export default function SeatMap({ showtimeId }) {
         <div className="section-title">Đang chiếu tại rạp</div>
         <div className="poster-row">
           {[
-            ['https://images.unsplash.com/photo-1464802686167-b939a6910659?w=400&q=80', 'Hành Trình Vô Tận'],
-            ['https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400&q=80', 'Mật Mã Đêm Tối'],
-            ['https://images.unsplash.com/photo-1519608425089-7f3bfa6f6bb8?w=400&q=80', 'Giấc Mơ Hollywood'],
-            ['https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&q=80', 'Thành Phố Không Ngủ'],
-          ].map(([src, title]) => (
-            <div className="poster-card" key={title}>
-              <img
-                src={src}
-                alt={title}
-                style={{ width: '100%', aspectRatio: '2/3', objectFit: 'cover', display: 'block' }}
-              />
-              <p>{title}</p>
-            </div>
-          ))}
+  {
+    src: "https://picsum.photos/id/1011/400/600",
+    title: "Hành Trình Vô Tận",
+  },
+  {
+    src: "https://picsum.photos/id/1015/400/600",
+    title: "Mật Mã Đêm Tối",
+  },
+  {
+    src: "https://picsum.photos/id/1025/400/600",
+    title: "Giấc Mơ Hollywood",
+  },
+  {
+    src: "https://picsum.photos/id/1035/400/600",
+    title: "Thành Phố Không Ngủ",
+  },
+].map(({ src, title }) => (
+  <div className="poster-card" key={title}>
+    <img
+      src={src}
+      alt={title}
+      className="poster-img"
+    />
+    <p>{title}</p>
+  </div>
+))}
         </div>
       </div>
     </div>
