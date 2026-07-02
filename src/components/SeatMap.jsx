@@ -236,13 +236,17 @@ function PosterCity() {
         <div className="section-title">Đang chiếu tại rạp</div>
         <div className="poster-row">
           {[
-            ['linear-gradient(160deg, #3A1A2E 0%, #A8233B 100%)', '🚀', 'Hành Trình Vô Tận'],
-            ['linear-gradient(160deg, #1A2A3A 0%, #2D9CDB 100%)', '🕵️', 'Mật Mã Đêm Tối'],
-            ['linear-gradient(160deg, #2E2410 0%, #D4A33C 100%)', '🎭', 'Giấc Mơ Hollywood'],
-            ['linear-gradient(160deg, #1A1A2E 0%, #5F49D4 100%)', '🌃', 'Thành Phố Không Ngủ'],
-          ].map(([bg, icon, title]) => (
+            ['https://images.unsplash.com/photo-1464802686167-b939a6910659?w=400&q=80', 'Hành Trình Vô Tận'],
+            ['https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400&q=80', 'Mật Mã Đêm Tối'],
+            ['https://images.unsplash.com/photo-1519608425089-7f3bfa6f6bb8?w=400&q=80', 'Giấc Mơ Hollywood'],
+            ['https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&q=80', 'Thành Phố Không Ngủ'],
+          ].map(([src, title]) => (
             <div className="poster-card" key={title}>
-              <div className="poster-img" style={{ background: bg }}>{icon}</div>
+              <img
+                src={src}
+                alt={title}
+                style={{ width: '100%', aspectRatio: '2/3', objectFit: 'cover', display: 'block' }}
+              />
               <p>{title}</p>
             </div>
           ))}
