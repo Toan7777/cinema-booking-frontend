@@ -100,7 +100,6 @@ function PosterCity() {
     </svg>
   );
 }
-export default function SeatMap({ showtimeId }) {
   const [seats, setSeats] = useState([]);
   const [selected, setSelected] = useState([]);
   const [lockExpiresAt, setLockExpiresAt] = useState(null);
